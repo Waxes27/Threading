@@ -74,7 +74,8 @@ def downloader(topic, img_url_list):
     if not os.path.exists(f"{os.environ['HOME']}/Splash_Pictures/"):
         os.mkdir(f"{os.environ['HOME']}/Splash_Pictures/")
 
-    if not os.path.exists(f"{os.environ['HOME']}/Splash_Pictures/{topic}/"):
+    if not os.path.exists(f"{os.environ['HOME']}/Splash_Pictures/{topic.capitalize()}/"):
+
         os.mkdir(f"{os.environ['HOME']}/Splash_Pictures/{topic.capitalize()}")
 
     for img_url in img_url_list:
@@ -90,11 +91,11 @@ def downloader(topic, img_url_list):
             # failed_downloads(img)
             # failed[topic] = img_name
 
-        with open(f"{os.environ['HOME']}/Splash_Pictures/{topic}/",'w+') as topic_folder:
-            print("Topic folder open")
-            with open(f'{topic_folder}/{img_name}', 'wb') as img_file:
-                img_file.write(img_bytes)
-                print(f"{img_name} has been downloaded...")
+        topic_folder = f"{os.environ['HOME']}/Splash_Pictures/{topic.capitalize()}/"
+        print("Topic folder open")
+        with open(f'{topic_folder}/{img_name}', 'wb') as img_file:
+            img_file.write(img_bytes)
+            print(f"{img_name} has been downloaded...")
 
 
 def main():
